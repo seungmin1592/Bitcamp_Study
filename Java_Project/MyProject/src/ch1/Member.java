@@ -5,7 +5,7 @@ public class Member {
 		
 		String name = "김승민";
 		int age = 25;
-		double height = 171; 
+		double height = 150; 
 		boolean hasBook = true;
 		
 		System.out.println("이름은" + name +"입니다");
