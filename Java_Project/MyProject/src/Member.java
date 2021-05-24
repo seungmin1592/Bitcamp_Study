@@ -8,7 +8,7 @@ class Calculator {
 	int multiply(int x, int y) {
 		return x * y;
 	}
-	double devide(int x, int y) {
+	int devide(int x, int y) {
 		return x / y;
 	}
 }
