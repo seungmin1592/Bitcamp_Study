@@ -1,7 +1,6 @@
-package ch1;
+package ch2;
 public class Member {
 	public static void main(String[] args) {
-		System.out.println("김승민");
 		
 		String name = "김승민";
 		int age = 25;
