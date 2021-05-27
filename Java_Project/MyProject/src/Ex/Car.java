@@ -21,6 +21,11 @@ class HybridCar extends Car {
 class HybridWaterCar extends HybridCar {
 	int waterGauge;
 	
+	public HybridWaterCar(int gg, int eg, int wg) {
+		super(gg, eg);
+		waterGauge = wg;
+	}
+	
 	public HybridWaterCar(int gg, int eg) {
 		super(gg, eg);
 	}
