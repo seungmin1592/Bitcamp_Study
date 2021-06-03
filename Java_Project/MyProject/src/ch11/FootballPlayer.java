@@ -64,7 +64,8 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 	
 	@Override
 	public int hashCode() {
-		return age % 10;
+		return age % 10; 
+		
 	}
 	
 	
