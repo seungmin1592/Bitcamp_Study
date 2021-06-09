@@ -57,3 +57,13 @@ from emp
 order by deptno -- 정렬 : 행의 정렬
 ;
 
+-- 특정 데이터를 검색하기 위해서는 
+-- select ~ from ~ 구문에 where절을 이용
+-- where 뒤에는 조건식이 정의 -> where 컬럼명 비교연산자 비교값
+-- where sal >= 3000
+
+select *
+from emp
+where sal >= 3000
+;
+
