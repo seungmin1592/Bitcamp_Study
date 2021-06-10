@@ -42,7 +42,7 @@ where mod(sal,2) = 1
 select concat('abc','efg'),'abc' || 'efg'
 from dual;
 
--- substr : 문자열 추츩
+-- substr : 문자열 추출
 -- substr(문자열,지가 위치, 길이) 
 
 select substr('apple',1,3)
@@ -53,5 +53,9 @@ from dual;
 
 
 -- replace : 특정 문자열(패턴) 다른 문자열(패턴)으로 변경
-select REPLACE('JACK and JUE', 'J','BL')
+select REPLACE('JACK and JUE', 'J','**')
+from dual;
+
+-- sysdate : 오늘 날짜 출력
+select sysdate
 from dual;
