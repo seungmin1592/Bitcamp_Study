@@ -113,10 +113,28 @@ select *
 from emp
 -- where comm is null
 where comm is not null
+order by comm
 ;
 
 
+-- 결과 행의 정렬 : order by 컬럼 [asc | desc]
+-- asc = 오름차순 desc = 내림차순
+-- 급여가 적은 사원부터 출력 : 오름차순 - asc
+select ename, sal
+from emp
+order by sal asc -- 정렬의 기본은 오름차순
+;
 
+-- 급여가 큰 사원부터 출력
+SELECT ename, sal
+FROM emp
+order by sal desc
+;
 
+-- 급여가 큰 사원부터 출력하고 급여가 같은 사원은 이름을 기준으로 오름차순으로
+select ename, sal
+from emp
+order by sal desc, ename
+;
 
-
+select * from customer;
