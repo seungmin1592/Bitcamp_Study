@@ -16,15 +16,14 @@ create table phoneInfo_basic (
 );
 
 
-create table phoneInfo_univ (
-    idx number(6) 
-        constraint phoneInfo_univ_idx_pk primary key,
-    fr_u_major varchar2(20) 
-        default 'N' not null,
-    fr_u_year number(1) default 1 not null, 
-        constraint phoneInfo_univ_ch check ( 0 < fr_u_year and fr_u_year < 5),
-    fr_ref number(7) 
-        not null, constraint phoneInfo_univ_fr_ref_fk references phoneInfo_basic(idx)
+create table phoneinfo_univ (
+    idx number(6),
+    fr_u_major VARCHAR2(20) default 'N' not null,
+    fr_u_year number(1) default 1  not null, --check (fr_u_year between 1 and 4),
+    fr_ref number(6) not null,
+    constraint pi_univ_idx_PK primary key (idx),
+    constraint chk check (fr_u_year between 1 and 4), -- 테이블 레벨에서 check  제약 설정 
+    constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
 );
 
 
@@ -36,3 +35,4 @@ create table phoneInfo_com (
     fr_ref number(6) 
         not null, constraint phoneInfo_com_fr_ref_fk references phoneInfo_basic(idx)
 );
+
