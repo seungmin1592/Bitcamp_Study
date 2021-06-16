@@ -5,6 +5,7 @@
 -- 앞에서 생성한 전화번호부 테이블을 기준으로 DML 을 작성해봅시다.
 
 -- 1. phoneInfo_basic 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
+desc phoneInfo_basic;
 
 -- phoneInfo_basic select
 select *
@@ -43,6 +44,11 @@ where idx = 1
 -- phoneInfo_univ delete
 delete from phoneInfo_univ;
 
+select *
+from phoneInfo_basic pb, phoneinfo_univ pu
+where pb.idx = pu.fr_ref
+;
+
 
 -- 3. phoneinfo_com 테이블의 SELECT, UPDATE, DELETE, INSERT 하는 SQL
 
@@ -62,3 +68,8 @@ where fr_ref = 2
 
 -- phoneInfo_com delete
 delete from phoneInfo_com;
+
+select *
+from phoneinfo_basic pb, phoneinfo_univ pu, phoneinfo_com pc
+where pb.idx = pu.fr_ref and pb.idx = pc.fr_ref
+;
