@@ -119,7 +119,7 @@ select empno, ename, sal, job from emp where 1 = 0;
 
 -- 컬럼 레벨에서 제약 사항 정의
 create table emp02(
-    empno number(4)constraint emp02_empno_pk primary key,   --not null unique,
+    empno number(4) constraint emp02_empno_pk primary key,   --not null unique,
     ename varchar2(20) constraint emp02_ename_nn not null,
     sal number(6,2) constraint emp02_sal_ck check (sal > 500 and sal < 5000),
     job varchar(20) default '미지정',
