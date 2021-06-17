@@ -36,3 +36,9 @@ create table phoneInfo_com (
         not null, constraint phoneInfo_com_fr_ref_fk references phoneInfo_basic(idx)
 );
 
+
+
+-- sequence : 번호 재생기
+create sequence pi_idx_pk;
+create sequence pi_u_idx_pk start with 5 increment by 1;
+create sequence pi_c_idx_pk start with 5 increment by 1;
