@@ -48,10 +48,28 @@ desc emp;
 
 
 -- 7. 사용자가 정의한 제약조건들을 확인하는 SQL문을 작성하시오.
-SELECT * 
-FROM ALL_CONSTRAINTS
-WHERE TABLE_NAME = 'contact';
+select * 
+from all_constraints
+where table_name = 'contact'
+;
 
 
 -- #2 아래 요구사항에 맞도록 고급 SQL 문을 작성하시오.
 -- 1. EMP 테이블의 ename 컬럼에 인덱스를 생성하는 SQL을 작성하시오. 인덱스의 이름은 emp_index
+create index emp_index 
+on emp(ename);
+
+-- 2. EMP 테이블과 DEPT 테이블을 조인하는 SQL을 기반으로 view 객체를 생성하는 SQL을 작성하시오.
+--    view 의 이름은 emp_view 로 하시오. 
+create or replace view emp_view 
+as
+select * 
+from emp natural join dept;
+
+-- 3. EMP 테이블에서 모든 사원의 부서번호를 이름이 'SCOTT'인 사원의 부서번호로 변경하는 SQL을 작성하시오.
+update emp
+set deptno = (select deptno from emp where ename = 'SCOTT')
+;
+
+
+
