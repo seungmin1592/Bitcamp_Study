@@ -29,3 +29,4 @@ from dual;
 
 select pi_idx_pk.currval
 from dual;
+
