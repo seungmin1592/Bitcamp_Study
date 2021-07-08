@@ -1,0 +1,110 @@
+/* 기본 설정 */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+* { 
+    margin:0;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+header {
+    padding:20px;
+    border-bottom: 1px solid #333;
+}
+
+.title_font {
+    font-weight: 600;
+}
+
+#regFormArea {
+    padding:20px 40px;
+    border-bottom:1px solid #AAA;
+}
+
+form label {
+    display:block
+}
+
+#regForm > table td {
+    width:150px;
+    padding:5px;
+}
+
+#regForm input[type="text"], #regForm input[type="password"] {
+    height: 30px;
+    width:200px;
+    font-size: 1.2em;
+    padding:0 5px;
+}
+
+#regForm input[type="submit"], #editForm input[type="submit"] {
+    width:100px;
+    height:56px;
+
+    border:1px solid #aaa;
+    font-size: 1.5em;
+    cursor: pointer;
+    background:lightgoldenrodyellow;
+}
+
+
+.msg {
+    color:red;
+    display:none;
+}
+
+
+/*회원 리스트 영역*/
+#listArea {
+    padding:20px 40px;
+    border-bottom:1px solid #aaa;
+}
+
+#listArea > table {
+    margin:10px 0;
+    width:60%;
+    border-collapse: collapse;
+}
+
+#listArea > table td, #listArea > table th {
+    padding:10px;
+    border:1px solid #aaa;
+    text-align: center;
+}
+
+
+/* 회원 정보 수정 영역 */
+#editFormArea {
+    width:400px;
+    border:1px solid #aaa;
+    border-radius: 10px;
+    background:lightcyan;
+    padding:20px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+
+#div_header{
+    border-bottom:1px solid #aaa;
+    overflow: hidden;
+}
+#div_header>h2{
+    float:left;
+}
+#div_header > div {
+    float:right;
+}
+#editForm > table {
+    width:100%;
+    margin-top:15px;
+}
+
+#editForm > table td {
+    padding: 5px 10px;
+    text-align:center;
+}
