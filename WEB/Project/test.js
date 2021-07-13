@@ -1,19 +1,20 @@
-// 회원의 정보 : 아이디, 비밀번호, 이름
+//회원의 정보 : 아이디, 비밀번호, 이름
 // Member -> 생성자 함수를 정의
 function Member(id, pw, name) {
     this.userid = id;
     this.pw = pw;
     this.username = name;
 }
-
 // 객체가 가지는 메소드는 공통으로 사용 -> prototype
-
 Member.prototype.makeHtml = function () {
     return '[id:' + this.userid + ' , pw: ' + this.pw + ' , name: ' + this.username + ' ]'
 };
 
+// 회원의 정보를 저장하는 배열
+var members = []; // new Array()
 
-var members = []; // new Array();
+
+
 
 $(document).ready(function () {
 
@@ -30,49 +31,61 @@ $(document).ready(function () {
     }
 
 
+
+    // var IdChk=RegExp(/^[a-zA-Z0-9]{4,12}$/); //4글자이상 12미만, 영어대소문자 숫자 -_사용가능
+    // var pwChk=RegExp(/^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{6,20}$/) //6글자이상 20자미만 최소1개숫자 혹은 특수문자 포함
+    // var nameChk= RegExp(/^[가-힣]+$/);
+
+
     var id = $('#userID');
     var pw = $('#pw');
     var repw = $('#repw');
     var name = $('#userName');
 
 
-    // regForm 캐스팅
+    $("#regForm").submit(function () {
 
-    $('#regForm').submit(function () {
 
-        var id_reg = /\w+@\w+\.\w+/;
-
-        // 아이디 유효성 검사
+        //아이디 공백확인
+        // if(id.trim().length<1){
         if (id.val().trim().length < 1) {
-            $('#userID + .msg').html('필수항목입니다.');
-            $('#userID + .msg').css({ display: 'block' });
+            $('#userID+div.msg').css('display', 'block').html('필수항목입니다.');
             return false;
         }
+        // else(!IdChk.test(id)){
 
-        if (!id_reg.test(id.val())) { // 이메일 입력 형식
-            $('#userID + .msg').html('입력형식이 맞지 않습니다.');
-            $('#userID + .msg').css({ display: 'block' });
-            return false;
-        }
+        // }
+
+        // //아이디 유효성 검사
+        // if(!IdChk.test($('#userID').val())){
+        //     $('#userID').focus();
+        // }
+
+
 
         if (pw.val().trim().length < 1) {
-            $('#pw + .msg').html('필수항목입니다.');
-            $('#pw + .msg').css({ display: 'block' });
+            $('#pw+div.msg').css('display', 'block').html('필수항목입니다.');
+            return false;
+        }
+
+        if (repw.val().trim().length < 1) {
+            $('#repw+div.msg').css('display', 'block').html('필수항목입니다.');
             return false;
         }
 
         // 비밀번호 비밀번호 확인 일치 여부 체크
         if (pw.val().trim() != repw.val().trim()) {
-            $('#repw + .msg').html('비밀번호가 일치하지 않습니다.');
-            $('#repw + .msg').css({ display: 'block' });
+            $('#repw+div.msg').css('display', 'block').html('비밀번호가 일치하지않습니다.');
             return false;
         }
 
-        // 사용자의 이름 정보
+        // 사용자 이름 정보
         if (name.val().trim().length < 1) {
-            $('#userName + .msg').html('필수항목입니다.');
-            $('#userName + .msg').css({ display: 'block' });
+            $('#userName+div.msg').css('display', 'block').html('필수항목입니다.');
+            return false;
         }
+
+
 
         // 배열에 사용자 정보를 추가
         members.push(new Member(id.val(), pw.val(), name.val()));
@@ -82,40 +95,36 @@ $(document).ready(function () {
 
         alert('등록되었습니다.');
         console.log('회원 리스트', members);
-
-        // form 초기화
-        this.reset();
-
-        // 테이블 세팅
+        this.reset(); //form 초기화
         setList();
+
         return false;
     });
 
     $(id).focus(function () {
-        $('#userID+div.msg').css({ display: 'none' });
-        $('#userID+div.msg').html('');
+        // $('#userID').on('focus',function(){
+        $('#userId+div.msg').css('display', 'none').html('');
     });
-
     $(pw).focus(function () {
-        $('#pw+div.msg').css({ display: 'none' });
-        $('#pw+div.msg').html('');
+        // $('#pw').on('focus',function(){
+        $('#pw+div.msg').css('display', 'none').html('');
     });
-
     $(repw).focus(function () {
-        $('#repw+div.msg').css({ display: 'none' });
-        $('#repw+div.msg').html('');
-        repw.value = '';
+        // $('#repw').on('focus',function(){
+        $('#repw+div.msg').css('display', 'none').html('');
+        repw.val('');
     });
-
     $(name).focus(function () {
-        $('#userName+div.msg').css({ display: 'none' });
-        $('#userName+div.msg').html('');
+        // $('#userName').on('focus',function(){
+        $('#userName+div.msg').css('display', 'none').html('');
     });
-}); // ready fnc
 
+
+});
+
+// 배열에 있는 요소를 -> table tr 행을 만들어서 출력
 function setList() {
 
-    var list = $('#list');
 
     var tbody = '<tr>';
     tbody += '  <th>순번(index)</th>';
@@ -126,11 +135,15 @@ function setList() {
     tbody += '</tr>';
 
     if (members.length < 1) {
+
         tbody += '<tr>';
         tbody += '<td colspan="5">데이터가 존재하지않습니다.</td>';
         tbody += '</tr>';
+
     } else {
+
         for (var i = 0; i < members.length; i++) {
+
             tbody += '<tr>';
             tbody += '  <td>' + i + '</td>';
             tbody += '  <td>' + members[i].userid + '</td>';
@@ -141,34 +154,32 @@ function setList() {
             tbody += '</tr>';
         }
     }
-    $(list).html(tbody);
-}; // setList
+    $('#list').html(tbody);
+
+
+}
+
 
 // 배열의 요소 삭제 함수
 function deleteMember(index) {
-
-    // 배열의 index 요소를 삭제
-
     if (confirm('삭제하시겠습니까?')) {
         members.splice(index, 1);
         alert('삭제되었습니다.');
-
         // 저장
         localStorage.setItem('members', JSON.stringify(members));
-
         // 테이블 리스트를 갱신
         setList();
     }
 }
 
-
 // 배열의 요소 수정 함수
 function editMember(index) {
 
-    // 수정 폼 영역이 노출되어야 한다!
-    $('#editFormArea').css({ display: 'block' });
 
-    // 이전 데이터를 폼에 세팅
+    // 수정 폼 영역이 노출되어야 한다!
+    $('#editFormArea').css('display', 'block');
+
+    // editForm의 태그들의 value  값을 세팅
     $('#editId').val(members[index].userid);
     $('#editPw').val(members[index].pw);
     $('#editRePw').val(members[index].pw);
@@ -176,9 +187,7 @@ function editMember(index) {
     $('#index').val(index);
 
     $('#editForm').submit(function () {
-
-        // 비밀번호와 비밀번호 확인이 같은지 체크
-        if (editPw.val() != editRePw.val()) {
+        if ($('#editId').val() != $('#editRePw').val()) {
             alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
             return false;
         }
@@ -187,8 +196,10 @@ function editMember(index) {
             return false;
         }
 
-        members[editIndex.val()].pw = editPw.val();
-        members[editIndex.val()].username = editName.val();
+        members[$('#editIndex').val()].pw = $('#editPw').val();
+        members[$('#editIndex').val()].username = $('#editName').val();
+
+
 
         // 저장
         localStorage.setItem('members', JSON.stringify(members));
@@ -200,13 +211,15 @@ function editMember(index) {
 
         editMemberClose();
 
-        return false;
+        return false
+
+
     });
+
 }
 
+
+//멤버 수정 창 닫기
 function editMemberClose() {
-    $('#editFormArea').css({ display: 'none' });
+    $('#editFormArea').css('display', 'none');
 }
-
-
-
