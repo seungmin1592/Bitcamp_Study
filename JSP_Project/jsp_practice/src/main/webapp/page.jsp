@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" cotent="text/html; charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,5 +15,15 @@
 		<%@include file="include/news.jsp" %>
 		<%@include file="include/shopping.jsp" %>
 	</div>
+	
+	<%-- <jsp:include page="footer.jsp"/> --%>
+	
+	<!-- 실행된 jsp -> html(text)결과를 가져온다 -->
+	<jsp:include page="footer.jsp">
+		<jsp:param name="email" value="test@gmail.com"/>
+		<jsp:param name="tel" value="010-0000-0000"/>
+	</jsp:include>
+	
+	
 </body>
 </html>
