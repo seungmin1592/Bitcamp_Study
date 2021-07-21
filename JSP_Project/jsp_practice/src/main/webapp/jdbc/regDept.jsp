@@ -1,3 +1,5 @@
+<%@page import="dept.domain.Dept"%>
+<%@page import="dept.dao.DeptDao"%>
 <%@page import="jdbc.util.ConnectionProvider"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -20,24 +22,18 @@
 
 	// 2. DB 처리 : insert
 	
-	// 데이터베이스 드라이버 로드
-	Class.forName("com.mysql.cj.jdbc.Driver");
+	// 데이터베이스 드라이버 로드 : 서블릿 클래스 Loader에서 드라이버 로드
+	
 	// 연결
 	Connection conn = null;
-	PreparedStatement pstmt = null;
+	DeptDao dao = DeptDao.getInstance();
+
 	
 	try {
 		
 		conn = ConnectionProvider.getConnection();
 		
-		// PreparedStatement
-		String sqlInsert = "insert into dept values(?,?,?)";
-		pstmt = conn.prepareStatement(sqlInsert);
-		pstmt.setInt(1, Integer.parseInt(deptno));
-		pstmt.setString(2, dname);
-		pstmt.setString(3, loc);
-		
-		resultCnt = pstmt.executeUpdate();
+		resultCnt = dao.insertDept(conn, new Dept((Integer.parseInt(deptno)), dname, loc));
 		
 		//out.println(resultCnt);
 		
