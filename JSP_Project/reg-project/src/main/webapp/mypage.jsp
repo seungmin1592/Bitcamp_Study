@@ -37,7 +37,8 @@
 		<h1>My Page</h1>
 		<hr>
 		<h3>
-			<%= loginInfo %>
+			<%-- <%= loginInfo %> --%>
+			${loginInfo }
 		
 		</h3>
 	

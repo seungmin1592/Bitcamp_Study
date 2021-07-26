@@ -8,7 +8,7 @@ import javax.servlet.ServletContextListener;
 
 import com.mysql.cj.exceptions.ExceptionInterceptorChain;
 
-public class DriverLoader implements ServletContextListener {
+public class JdbcListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
