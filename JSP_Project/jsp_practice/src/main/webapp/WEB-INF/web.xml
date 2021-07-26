@@ -16,4 +16,31 @@
   	<servlet-class>com.ncs.Loader</servlet-class>
   	<load-on-startup>1</load-on-startup>
   </servlet>
+  
+  <!-- filter 등록 -->
+  <filter>
+  	<filter-name>LoginCheckFilter</filter-name>
+  	<filter-class>filter.LoginCheckFilter</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>LoginCheckFilter</filter-name>
+  	<url-pattern>/member/mypage/*</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+  	<filter-name>LoginCheckFilter</filter-name>
+  	<url-pattern>/jdbc/*</url-pattern>
+  </filter-mapping>
+  
+  <context-param>
+  	<param-name>jdbcdriver</param-name>
+  	<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  
+  <listener>
+  	<listener-class>jdbc.util.jdbcListener</listener-class>
+  </listener>
+  
+  
 </web-app>
