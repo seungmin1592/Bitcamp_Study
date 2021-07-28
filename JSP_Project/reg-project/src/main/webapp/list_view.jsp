@@ -44,7 +44,7 @@
 		<c:if test="${result ne null and not empty result }">
 		<c:forEach items="${result }" var="member">
 		<tr>
-			<td>${member.idx}<%-- <%= list.get(i).getIdx() %> --%></td>			
+			<td>${member.idx}<%-- <%= list.get(i).getIdx() %> --%></td>`	
 			<td>${member.memberid}<%-- <%= list.get(i).getMemberid() %> --%></td>
 			<td>${member.password}<%-- <%= list.get(i).getPassword() %> --%></td>
 			<td>${member.membername}<%-- <%= list.get(i).getMembername() %> --%></td>
