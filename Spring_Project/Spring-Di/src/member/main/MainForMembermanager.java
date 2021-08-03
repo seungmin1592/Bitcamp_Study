@@ -84,7 +84,9 @@ public class MainForMembermanager {
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
-
+		
+		
+		
 	}
 
 	static void printMenu() {

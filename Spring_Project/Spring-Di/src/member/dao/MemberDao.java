@@ -1,6 +1,5 @@
 package member.dao;
 
-import java.sql.Connection;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -11,12 +10,13 @@ import member.domain.Member;
 public class MemberDao implements Dao {
 	
 	private static int nextId = 0;
-	private Map<String, Member> map = new HashMap<String, Member>();
-	//         email, Member
+	private Map<String, Member> map = new HashMap();
+	//          email , Member
 
 	public MemberDao() {
 		System.out.println("MemberDao 인스턴스 생성");
 	}
+	
 	
 	@Override
 	public Member selectByEmail(String email) {
@@ -29,7 +29,6 @@ public class MemberDao implements Dao {
 		map.put(member.getEmail(), member);
 	}
 
-
 	@Override
 	public void update(Member member) {
 		map.put(member.getEmail(), member);
@@ -39,6 +38,5 @@ public class MemberDao implements Dao {
 	public Collection<Member> selectAll() {
 		return map.values();
 	}
-
 
 }

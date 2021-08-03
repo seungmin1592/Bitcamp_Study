@@ -3,10 +3,8 @@ package member.main;
 import java.util.Scanner;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import member.dao.MemberDao;
 import member.domain.RegRequest;
 import member.service.ChangePasswordService;
 import member.service.MemberRegService;
@@ -17,7 +15,9 @@ public class SpringMain1 {
 
 	public static void main(String[] args) {
 		
-		ctx = new GenericXmlApplicationContext("classpath:appCtx1.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx1.xml");
+		//ctx = new GenericXmlApplicationContext("classpath:appCtx2.xml");
+		ctx = new GenericXmlApplicationContext("classpath:appCtx3.xml");
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -48,8 +48,7 @@ public class SpringMain1 {
 	private static void processChangePw(String[] values) {
 		
 		//ChangePasswordService service = new ChangePasswordService(dao);
-		// ChangePasswordService service = assembler.getPasswordService();
-		
+		//ChangePasswordService service = assembler.getPasswordService();
 		ChangePasswordService service = ctx.getBean("changePwService", ChangePasswordService.class);
 		
 		try {
@@ -70,9 +69,7 @@ public class SpringMain1 {
 		
 		//MemberRegService service = new MemberRegService(dao);
 		//MemberRegService service = assembler.getRegService();
-		
 		MemberRegService service = ctx.getBean("regService", MemberRegService.class);
-		
 		RegRequest request = new RegRequest();
 		request.setEmail(values[1]);
 		request.setName(values[2]);
@@ -93,7 +90,9 @@ public class SpringMain1 {
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
-
+		
+		
+		
 	}
 
 	static void printMenu() {
