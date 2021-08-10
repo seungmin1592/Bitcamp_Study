@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Open Project : 회원가입</title>
 <link rel="stylesheet" href="<%= request.getContextPath()%>/css/default.css">
 <style>
 	.display_none {
@@ -18,7 +19,7 @@
 	}
 	
 	#loadingimg {
-		height:30px;
+		height:20px;
 	}
 </style>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -35,8 +36,10 @@
 		$('#memberid').focusout(function(){
 			// ajax 비동기 통신 => id를 서버로 보내고 사용 가능 유무의 응답 코드를 받는다 => 화면에 메세지 출력
 			
+			
+			
 			$.ajax({
-				url : 'idcheck.jsp',
+				url : '<c:url value="/member/idCheck"/>',
 				type : 'post',
 				data : {mid:$(this).val()},
 				beforeSend : function(){
@@ -83,7 +86,7 @@
 					<td>아이디</td>
 					<td><input type="text" name="memberid" id="memberid">
 						<span id="msg" class="display_none"></span>
-						<img id="loadingimg" class="display_none" alt="loading" src='<c:url value="/image/loading.gif"/>'> 
+						<img id="loadingimg" class="display_none" alt="loading" src="<c:url value="/images/loading.gif"/>"> 
 					</td>
 				</tr>
 				<tr>
