@@ -19,7 +19,6 @@
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/images/**" location="/images/" />
 	<resources mapping="/uploadfile/**" location="/uploadfile/" />
-	
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -27,19 +26,28 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
-				p:defaultEncoding="UTF-8"
-				p:maxUploadSize="10000000"
-				>
+	<beans:bean id="multipartResolver" 
+							class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+							p:defaultEncoding="utf-8"
+							p:maxUploadSize="10000000"
+							>
 	</beans:bean>
 	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 로그인 상태를 확인하는 interceptor 등록 -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
-			<mapping path="/board/**"></mapping>
+			<mapping path="/board/**"/>
 			<beans:bean class="com.bitcamp.op.interceptor.AuthCheckInterceptor"/>
 		</interceptor>
-	</interceptors> -->
+	
+	</interceptors>
 	
 	
 	

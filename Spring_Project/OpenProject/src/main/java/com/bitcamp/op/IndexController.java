@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
+
 	@RequestMapping("/index")
 	public void index() {
 	}
@@ -15,4 +16,4 @@ public class IndexController {
 		return "redirect:/index";
 	}
 	
-}	
+}

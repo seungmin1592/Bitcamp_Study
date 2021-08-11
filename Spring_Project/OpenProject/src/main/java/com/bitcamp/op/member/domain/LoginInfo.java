@@ -1,12 +1,12 @@
 package com.bitcamp.op.member.domain;
 
 public class LoginInfo {
-	
+
 	private int idx;
 	private String memberId;
 	private String memberName;
 	private String memberPhoto;
-	
+
 	public LoginInfo(int idx, String memberId, String memberName, String memberPhoto) {
 		this.idx = idx;
 		this.memberId = memberId;
@@ -26,7 +26,6 @@ public class LoginInfo {
 		return memberName;
 	}
 
-	
 	public String getMemberPhoto() {
 		return memberPhoto;
 	}
@@ -38,7 +37,5 @@ public class LoginInfo {
 	}
 
 	
-	
-	
-	
+
 }

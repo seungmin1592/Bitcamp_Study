@@ -1,4 +1,4 @@
-package com.bitcamp.op.board.controller;
+package com.bitcamp.op.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +14,17 @@ public class IdCheckController {
 	
 	@Autowired
 	private IdCheckService checkService;
-	
-	@RequestMapping(value="/member/idCheck")
+
+	@RequestMapping(value="/member/idCheck", method =  RequestMethod.POST)
 	public String idCheck(
 			@RequestParam("mid") String uid,
 			Model model
 			) {
 		
-		model.addAttribute("result", checkService.idCheck(uid));
+		model.addAttribute("result",checkService.idCheck(uid));
 		
 		return "member/idcheck";
 	}
+	
+	
 }

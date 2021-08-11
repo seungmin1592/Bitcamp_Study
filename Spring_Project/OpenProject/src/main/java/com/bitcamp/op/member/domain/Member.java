@@ -4,14 +4,14 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 public class Member {
-	
+
 	private int idx;
 	private String memberid;
 	private String password;
 	private String membername;
 	private String memberphoto;
 	private Timestamp regdate;
-	
+
 	public Member(int idx, String memberid, String password, String username, String memberphoto, Timestamp regdate) {
 		this.idx = idx;
 		this.memberid = memberid;
@@ -20,8 +20,9 @@ public class Member {
 		this.memberphoto = memberphoto;
 		this.regdate = regdate;
 	}
-	
-	public Member() {}
+
+	public Member() {
+	}
 
 	public int getIdx() {
 		return idx;
@@ -62,8 +63,7 @@ public class Member {
 	public void setRegdate(Timestamp regdate) {
 		this.regdate = regdate;
 	}
-	
-	
+
 	public String getMemberphoto() {
 		return memberphoto;
 	}
@@ -78,20 +78,16 @@ public class Member {
 	}
 
 	
-	
+
 	@Override
 	public String toString() {
 		return "Member [idx=" + idx + ", memberid=" + memberid + ", password=" + password + ", membername=" + membername
 				+ ", memberphoto=" + memberphoto + ", regdate=" + regdate + "]";
 	}
 
-		// Member -> LoginInfo
-		public LoginInfo toLoginInfo() {
-			return new LoginInfo(this.idx, this.memberid, this.membername, this.memberphoto);
-		}
-	
-	
-	
-	
+	// Member -> LoginInfo
+	public LoginInfo toLoginInfo() {
+		return new LoginInfo(this.idx, this.memberid, this.membername, this.memberphoto);
+	}
 
 }
