@@ -7,13 +7,16 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitcamp.op.jdbc.ConnectionProvider;
 import com.bitcamp.op.jdbc.JdbcUtil;
+import com.bitcamp.op.member.dao.Dao;
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
 import com.bitcamp.op.member.dao.MemberDao;
+import com.bitcamp.op.member.dao.MybatisMemberDao;
 import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.MemberRegRequest;
 
@@ -25,8 +28,17 @@ public class MemberRegService {
 	//@Autowired
 	//private MemberDao dao;
 	
+//	@Autowired
+//	private JdbcTemplateMemberDao dao;
+	
+	// @Autowired
+	// private MybatisMemberDao dao;
+	
+	private Dao dao;
+	
 	@Autowired
-	private JdbcTemplateMemberDao dao;
+	private SqlSessionTemplate template;
+	
 	
 	public int memberReg(
 			MemberRegRequest regRequest,
@@ -96,7 +108,7 @@ public class MemberRegService {
 			// 2. dao 저장
 			//conn = ConnectionProvider.getConnection();
 			
-			
+			dao =template.getMapper(Dao.class);
 			
 			resultCnt = dao.insertMember(member);
 			
@@ -107,12 +119,6 @@ public class MemberRegService {
 			// 자식 테이블 insert 구문..
 			
 		} catch (IllegalStateException | IOException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// DB 예외 발생 시 -> 저장된 파일을 삭제
-			if(newFile != null && newFile.exists() ) {
-				newFile.delete();
-			}
 			e.printStackTrace();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
