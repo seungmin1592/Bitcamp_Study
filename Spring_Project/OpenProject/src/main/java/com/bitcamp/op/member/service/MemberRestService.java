@@ -13,22 +13,18 @@ import com.bitcamp.op.member.domain.Member;
 
 @Service
 public class MemberRestService {
-
+	
 	private Dao dao;
 	
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	// idx로 검색한 Member 정보
+	// idx 로 검색한 Member 정보
 	public Member getMember(int idx) {
-		
 		dao = template.getMapper(Dao.class);
-		
-		// Member member = dao.selectByIdx(idx);
-		
 		return dao.selectByIdx(idx);
 	}
-	
+
 	// 모든 Member 정보
 	public List<Member> getMembers() {
 		dao = template.getMapper(Dao.class);
@@ -39,12 +35,18 @@ public class MemberRestService {
 		
 		List<Member> list = getMembers();
 		Map<Integer, Member> members = new HashMap<Integer, Member>();
-		
 		for(int i=0; i<list.size(); i++) {
 			members.put(list.get(i).getIdx(), list.get(i));
 		}
 		
 		return members;
 	}
-	
+
 }
+
+
+
+
+
+
+ 

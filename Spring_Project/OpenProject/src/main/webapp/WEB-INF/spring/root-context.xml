@@ -10,7 +10,11 @@
 	<bean id="datasource"
 				class="com.zaxxer.hikari.HikariDataSource"
 				p:driverClassName="com.mysql.cj.jdbc.Driver"
+<<<<<<< Updated upstream
 				p:jdbcUrl="jdbc:mysql://mysql205.crxn8egadmkm.ap-northeast-2.rds.amazonaws.com:3306/project?serverTimezone=UTC"
+=======
+				p:jdbcUrl="jdbc:mysql://mysql205.cjctzbdszd1g.ap-northeast-2.rds.amazonaws.com:3306/project?serverTimezone=UTC"
+>>>>>>> Stashed changes
 				p:username="bit"
 				p:password="bit"
 	>
@@ -25,21 +29,35 @@
 	
 	<!-- SqlSessionFactoryBean 등록 -->
 	<bean id="sqlSessionFactoryBean"
-			class="org.mybatis.spring.SqlSessionFactoryBean"
-			p:dataSource-ref="datasource"
-			p:mapperLocations="classpath:com/bitcamp/op/member/dao/mapper/*.xml"
-		>
-		<!-- /WEB-INF/mapper/*.xml -->
-		
+				class="org.mybatis.spring.SqlSessionFactoryBean"
+				p:dataSource-ref="datasource"
+				p:mapperLocations="classpath:com/bitcamp/op/member/dao/mapper/*.xml"
+				>
+				<!--  /WEB-INF/mapper/*.xml -->
 	</bean>
 	
 	<!-- SqlSessionTemplate 등록 -->
 	<bean id="sqlSessionTemplate"
-		class="org.mybatis.spring.SqlSessionTemplate"
+				class="org.mybatis.spring.SqlSessionTemplate"
 	>
 		<constructor-arg ref="sqlSessionFactoryBean"/>
-	
 	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

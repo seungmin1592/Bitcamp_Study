@@ -20,14 +20,16 @@ public class MemberListController {
 	@RequestMapping("/member/list")
 	public String getList(
 			SearchType searchType,
-			Model model) {
+			Model model
+			) {
 		
 		System.out.println(searchType);
 		
 		List<Member> list = null;
 		
-		if(searchType.getKeyword() != null && searchType.getKeyword().trim().length() > 0){
+		if(searchType.getKeyword() != null && searchType.getKeyword().trim().length()>0) {
 			list = listService.getMemberList(searchType);
+			System.out.println(1);
 		} else {
 			list = listService.getMemberList();
 		}
