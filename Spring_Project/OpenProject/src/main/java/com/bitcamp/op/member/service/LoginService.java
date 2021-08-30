@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.bitcamp.op.jdbc.ConnectionProvider;
 import com.bitcamp.op.member.dao.Dao;
 import com.bitcamp.op.member.dao.JdbcTemplateMemberDao;
-import com.bitcamp.op.member.dao.MybatisMemberDao;
+import com.bitcamp.op.member.dao.mybatisMemberDao;
 import com.bitcamp.op.member.domain.Member;
 
 @Service

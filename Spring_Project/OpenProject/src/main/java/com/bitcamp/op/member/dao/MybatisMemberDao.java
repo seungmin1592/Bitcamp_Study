@@ -21,7 +21,7 @@ import com.bitcamp.op.member.domain.Member;
 import com.bitcamp.op.member.domain.SearchIdPw;
 
 @Repository
-public class MybatisMemberDao {
+public class mybatisMemberDao {
 
 	@Autowired
 	private SqlSessionTemplate template;
